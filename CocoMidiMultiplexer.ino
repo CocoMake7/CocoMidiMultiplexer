@@ -30,18 +30,9 @@ unsigned long cocotouchsend_lastTime;
 
 static inline void setAnalogMultiplexCh(const uint8_t _pin_index)
 {
-  // set switch to output (not sure why, but must be set everytime..)
-//  pinMode(PB1, OUTPUT);
-//  pinMode(PB0, OUTPUT);
-
-//  DDRB |=  _BV(PB1) | _BV(PB0);
-
   // set multiplexer, select channel
   digitalWriteFast(PB1, ((_pin_index >> 1) & 0x01));
   digitalWriteFast(PB0, ((_pin_index >> 2) & 0x01));
-
-    //PORTB |= (((_pin_index>>1) & 0x01)<<PB1);
-   // PORTB |= (((_pin_index>>2) & 0x01)<<PB0);
 }
 
 void setup() {
