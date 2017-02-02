@@ -1,6 +1,7 @@
 #include <CocoMidi.h>
 #include <CocoTouch.h>
 #include <CocoTouchFilterSettingDefault.h>
+#include "digitalWriteFastTiny.h"
 
 #define PIN_SELECT 0
 #define NUM_CHANNEL 4
@@ -36,8 +37,8 @@ static inline void setAnalogMultiplexCh(const uint8_t _pin_index)
 //  DDRB |=  _BV(PB1) | _BV(PB0);
 
   // set multiplexer, select channel
-  digitalWrite(PB1, ((_pin_index >> 1) & 0x01));
-  digitalWrite(PB0, ((_pin_index >> 2) & 0x01));
+  digitalWriteFast(PB1, ((_pin_index >> 1) & 0x01));
+  digitalWriteFast(PB0, ((_pin_index >> 2) & 0x01));
 
     //PORTB |= (((_pin_index>>1) & 0x01)<<PB1);
    // PORTB |= (((_pin_index>>2) & 0x01)<<PB0);
@@ -81,7 +82,7 @@ void loop() {
 //  CocoMidi.update();
 
     // put your main code here, to run repeatedly:
-    if (millis() - cocotouchsend_lastTime >= 7)  {
+    if (millis() - cocotouchsend_lastTime >= 4  )  {
       for (uint8_t i = 0; i < NUM_CHANNEL; i++)
       {
         filtered_value = CocoTouchFilter_get(&filter_samp[i]);
