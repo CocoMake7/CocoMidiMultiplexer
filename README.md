@@ -7,12 +7,13 @@
 Channel Select:
 
 - Attiny Pin 4 (GND) ->> 4051 S0 pin 11 (always LOW)
-- Attiny Pin 5 ->> 4051 S1 Pin 9
-- Attiny Pin 6 ->> 4051 S2 Pin 10
+- Attiny Pin 5 -> 4051 S1 Pin 9
+- Attiny Pin 6 -> 4051 S2 Pin 10
 
-Analog reading:
+Capacitive sensing:
 
-- Attiny Pin 3 ->> 4051 Z Pin 3
+- Attiny Pin 3 sense (PB2) -> 4051 Z Pin 3
+- Attiny Pin 7 reference (PB4) -> floating
 
 by this table 
 
